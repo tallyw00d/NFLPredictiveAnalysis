@@ -8,7 +8,7 @@ class NFLSpiderGames(scrapy.Spider):
     
     def start_requests(self):
         min_year = 2002
-        max_year = 2018
+        max_year = 2021
     
         # NFL results from 2002-2017 (32 teams starting in 2002)    
         for i in range(min_year, max_year):
