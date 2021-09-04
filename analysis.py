@@ -16,7 +16,7 @@ target = ['h_wins', 'line_w', 'over_w']
 h_wins = ['h_wins']
 
 # Baseline (Naive approach): Determine winners by selecting the Vegas spread favorite
-pred = df[df.year == 2017]
+pred = df[df.year == 2021]
 base = pd.to_numeric(np.array(np.where(pred['line'] < 0, 1, 0)))
 base = pd.to_numeric(np.array(np.where(pred['h_wins'] == base, 1, 0)))
 base = pd.Series(base)
@@ -63,7 +63,7 @@ def get_idx(season):
     return x_train, y_train, cv, size
 
 # 2003-2015 used for training and 2016 for tuning
-tuning = list(get_idx(2016))
+tuning = list(get_idx(2020))
 x_train = tuning[0]
 y_train = tuning[1]
 cv = tuning[2]
@@ -103,7 +103,7 @@ del pred, tuning, x_train, y_train, lr, rf, gb, nn, param
 ##### MODEL TESTING #####
 
 # 2003-2016 used for training and 2017 for testing
-testing = list(get_idx(2017))
+testing = list(get_idx(2021))
 x_test = testing[0]
 y_test = testing[1]
 cv = testing[2]
